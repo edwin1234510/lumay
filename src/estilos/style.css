@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url(./componentes/botones.css);
+@import url(./componentes/formularios.css);
+@import url(./componentes/tabla.css);
+@import url(./componentes/cartas.css);
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+    --borde_naraja: #EF885D;
+    --borde_morado: #4C5AE4;
+    --texto_naranja: #EF885D;
+    --boton_naranja: #EF885D;
+    --sombra_tabla: #f2ac8e;
+    --hover_boton: #ff6422;
+    --texto_blanco: #fff;
+    --input_fondo_lila: #b1b7f3;
+    --texto_lila: #b1b7f3;
+    --fondo_morado: #4C5AE4;
+    --fondo_blanco: #fff;
+    --fondo_naranja: #EF885D;
+    --texto_morado: #4C5AE4;
+    --texto_gris: #464646;
+    --texto_negro: #262626;
+    --body_fondo: #fff;
+    --hover_boton_sidebar: #d8d8d8;
+    --Nerko_One: "Nerko One", cursive;
+    --Poppins: "Poppins", sans-serif;
+}
+
+
+/*-------- login y registro ---------*/
+.contenedor {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+  }
+  
+  .contenedor__izquierda {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 30px;
+  }
+  
+  .contenedor__derecha {
+    width: 40%;
+    justify-content: end;
+    display: flex;
+  }
+  
+  .contenedor__imagen {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 120px;
+    margin-bottom: 20px;
+  }
+  /*---- dashboard -----*/
+  .grid {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 13% 1fr;
+    grid-template-rows: 90px 1fr;
+    grid-template-areas:
+      'encabezado encabezado'
+      'sidebar container';
+  }
+  /*------ header ------*/
+
+  .encabezado {
+    grid-area: encabezado;
+    background-color: var(--fondo_morado);
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;          
+    padding: 0 40px;               
+    height: 100%;                   
+  }
+  
+  .encabezado__izquierda {
+    display: flex;
+    align-items: center;
+  }
+  
+  .encabezado__logo {
+    margin: 0;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  .encabezado__imagen {
+    width: 110px;
+    height: 70px;
+  }
+  
+  .encabezado__derecha {
+    display: flex;
+  }
+  
+  .encabezado__perfil {
+    display: flex;
+    align-items: center;
+  }
+  
+  .encabezado__nombre {
+    display: flex;
+    align-items: center;
+    height: 15px;
+    color: var(--texto_blanco);
+    font-family: var(--Nerko_One);
+    font-weight: normal;
+    font-size: 30px;
+    margin-right: 18px;
+  }
+  
+  .encabezado__icono {
+    background: var(--fondo_blanco);
+    color: var(--texto_naranja);
+    height: 60px;
+    width: 60px;
+    font-size: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .encabezado__linea {
+    width: 3px;
+    height: 35px;
+    background: var(--fondo_blanco);
+    margin-right: 18px;
+  }
+
+  /*---- sidebar -----*/
+  .sidebar {
+    grid-area: sidebar;
+    background-color: var(--fondo_naranja);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sidebar__link {
+    margin: 60px 15px 0 15px;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: var(--Nerko_One);
+    color: var(--texto_blanco);
+    padding: 5px 7px;
+    border-bottom: solid 4px var(--borde_naraja);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar__link:hover {
+    color: var(--hover_boton_sidebar);
+  }
+  
+  .sidebar__icono {
+    margin-right: 15px;
+  }
+
+  
+  /*---- main o contend---*/
+  .main-container {
+    grid-area: container;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    min-width: 397px;
+    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+  }
+  
+/*----- reserva -----*/
+.reserva {
+  width: 80%;
+  min-height: 130px;
+  border: 5px solid var(--borde_morado);
+  margin-top: 50px;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.reserva__detalle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.reserva__texto {
+  font-family: var(--Poppins);
+  color: var(--texto_gris);
+}
+
+.reserva__acciones {
+  border-left: 2px solid var(--borde_morado);
+  border-right: 2px solid var(--borde_morado);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.reserva__estado {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.reserva__boton {
+  min-width: 180px;
+  padding: 6px 0;
+  background-color: var(--borde_naraja);
+  color: var(--texto_blanco);
+  font-size: 30px;
+  font-family: var(--Nerko_One);
+  border: none;
+  letter-spacing: 2px;
+  border-radius: 35px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.reserva__boton:hover {
+  background: var(--hover_boton);
+}
+
+.reserva__estado-texto {
+  font-size: 35px;
+  font-family: var(--Nerko_One);
+  color: var(--texto_morado);
+}
+
+.reserva__estado-cancelado {
+  color: var(--texto_naranja);
+  font-size: 35px;
+  font-family: var(--Nerko_One);
+}
+
+/*--- imagenes en agendar -----*/
+.imagen_esquinas {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+}
+.imagen_esquinas_primero{
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  left: 0;
+  top: 0;
+}
+
+/*----- piercing agendar  ----*/
+.contenedor_todo{
+  width: 100%;
+  height: 100vh;
+  display: flex ;
+  align-content: center;
+}
+.contenido_agendar {
+  border: solid 6px var(--borde_morado);
+  width: 80%;
+  min-height: 130px;
+  margin-top: 70px;
+  border-radius: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.combobox {
+  width: 220px;
+  height: 50px;
+  background-color: var(--input_fondo_lila);
+  border: none;
+  font-family: var(--Poppins);
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.perforacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.material {
+  border-left: solid 2px var(--borde_morado);
+  border-right: solid 2px var(--borde_morado);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.precios {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--Poppins);
+  font-size: 16px;
+  border-right: solid 2px var(--borde_morado);
+}
+
+.contenedor_main__icono {
+  margin-top: 35px;
+  font-size: 35px;
+  color: var(--texto_naranja);
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+.eliminar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--Nerko_One);
+  font-size: 27px;
+}
+
+.eliminar__link {
+  text-decoration: none;
+  color: var(--texto_naranja);
+  letter-spacing: 1px;
+}
+
+.contenedor_main__agendar {
+  text-decoration: none;
+  font-family: var(--Nerko_One);
+  font-size: 27px;
+  color: var(--texto_blanco);
+  background: var(--fondo_naranja);
+  padding: 7px 30px;
+  letter-spacing: 1px;
+  border-radius: 25px;
+  margin-bottom: 40px;
+  transition: 0.3s;
+}
+
+.contenedor_main__agendar:hover {
+  background-color: var(--hover_boton);
+}
+
+.eliminar__link:hover,
+.contenedor_main__icono:hover {
+  color: var(--hover_boton);
+}
+
+/*---- imagenes de esquinas en agendar ------*/
+.imagen_esquinas:nth-child(2) {
+  top: 0;
+  right: 0;
+  transform: rotate(90deg);
+}
+
+.imagen_esquinas:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.imagen_esquinas:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+/*--- calendario ----*/
+/* Contenedor principal del calendario */
+.calendario-admin {
+  width: 80%;
+  margin: 60px auto;
+  padding: 20px;
+  background-color: var(--fondo_blanco);
+  border: solid 4px var(--borde_naraja);
+  border-radius: 15px;
+}
+
+/* Estilos internos del calendario */
+.calendario-admin .fc {
+  font-family: var(--Poppins);
+  font-size: 14px;
+  color: var(--fondo_morado);
+}
+
+.calendario-admin .fc-toolbar-title {
+  font-size: 35px;
+  font-family: var(--Nerko_One);
+  color: var(--texto_naranja);
+  letter-spacing: 2px;
+}
+
+.calendario-admin .fc-daygrid-event {
+  border-radius: 6px;
+  margin-top: 7px;
+  padding: 4px;
+  font-size: 12px;
+  font-family: var(--Poppins);
+}
+
+/* Eventos de estado */
+.calendario-admin .fc-event.pendiente {
+  border: solid 2px var(--borde_morado);
+  color: var(--texto_negro);
+}
+
+.calendario-admin .fc-event.completada {
+  background-color: var(--fondo_morado); 
+  border: solid 2px var(--borde_morado);
+  color:var(--texto_blanco);
+}
+
+
+/* Forzar estilo general para todos los botones de FullCalendar */
+.fc .fc-button {
+  background-color: var(--fondo_morado) !important;
+  color: var(--texto_blanco) !important;
+  border: none !important;
+
+  padding: 6px 12px !important;
+  font-family: var(--Poppins);
+  transition: 0.3s;
+}
+
+/* Hover para todos */
+.fc .fc-button:hover {
+  background-color: var(--texto_lila) !important;
+}
+
+.agregar{
+  width: 78vw;
+  height: 50px;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+}
+
+
+
+  
+@media(max-width: 1000px) {
+  .contenedor__derecha {
+    display: none;
+  }
+  .contenedor__izquierda{
+      width: 100%;
+  }
+}
+  

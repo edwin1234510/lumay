@@ -1,0 +1,22 @@
+.boton {
+    margin-top: 25px;
+    padding: 8px 25px;
+    font-size: 22px;
+    border: none;
+    border-radius: 30px;
+    font-family: var(--Nerko_One);
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .boton--primario {
+    background: var(--boton_naranja);
+    color: var(--texto_blanco);
+    margin-bottom: 30px;
+  }
+  
+  .boton--primario:hover {
+    background: var(--hover_boton);
+    transition: 0.3s;
+  }

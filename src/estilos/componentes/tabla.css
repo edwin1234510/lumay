@@ -1,0 +1,69 @@
+.contenedor_tabla {
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+  
+  }
+  
+  .tabla {
+    border-spacing: 0 10px;
+    width: 70vw;
+    text-align: center;
+    font-family: var(--Poppins);
+    font-size: 15px;
+    margin: 50px auto;
+    padding: 15px 30px;
+    box-shadow: 0 0 20px 2px var(--sombra_tabla);
+    border-radius: 10px;
+  }
+  
+  .titulos {
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--texto_naranja);
+    padding: 0 20px;
+  }
+  
+  .celda {
+    border: solid 1px var(--borde_naraja);
+    width: 10vw;
+    padding: 22px;
+  }
+  
+  .celda__boton {
+    background-color: var(--boton_naranja);
+    padding: 6px 25px;
+    border-radius: 25px;
+    font-family: var(--Nerko_One);
+    text-decoration: none;
+    color: var(--texto_blanco);
+    font-size: 24px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .celda__boton:hover {
+    background-color: var(--hover_boton);
+  }
+  
+  .tabla_pie {
+    margin: 0 auto;
+  }
+  
+  .contenedor_tabla__boton {
+    background-color: var(--boton_naranja);
+    color: var(--texto_blanco);
+    text-decoration: none;
+    padding: 6px 20px;
+    border-radius: 25px;
+    letter-spacing: 1px;
+    font-size: 25px;
+    font-family: var(--Nerko_One);
+    transition: 0.3s;
+  }
+  
+  .contenedor_tabla__boton:hover {
+    background-color: var(--hover_boton);
+  }
