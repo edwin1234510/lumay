@@ -9,7 +9,45 @@
     cursor: pointer;
     text-decoration: none;
   }
-  
+
+.boton--cuidados{
+    border-radius: 30px;
+    font-family: var(--Poppins);
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    color: var(--texto_morado);
+    background-color: var(--fondo_blanco);
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.boton--sin_margen{
+  margin: 0;
+}
+
+.boton--detalles{
+  border-radius: 30px;
+  font-family: var(--Poppins);
+    font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  color: var(--texto_naranja);
+  background-color: var(--fondo_blanco);
+  font-size: 18px;
+  transition: 0.3s;
+}
+.boton--detalles:hover{
+  color: var(--hover_boton);
+}
+.boton--cuidados:hover{
+  color: var(--texto_lila);
+}
+
   .boton--primario {
     background: var(--boton_naranja);
     color: var(--texto_blanco);

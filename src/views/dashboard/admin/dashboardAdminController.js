@@ -1,5 +1,6 @@
 import { headerController } from "../../../componentes/headerController";
 import { adminGaleriaController } from "./galeria/adminGaleriaController";
+import { galeriaDetalleController } from "./galeria/detalles/galeriaDetalles";
 import { crearCarta } from "./galeria/nueva/nuevaCarta";
 import { adminCalendarioController } from "./reservas/adminReservasController";
 import { editarReservasAdmin } from "./reservas/editarReservas";
@@ -31,6 +32,13 @@ export const dashboardAdminController = async() =>{
             const html = await vistaHtml.text();
             main.innerHTML = html;
             await usuarioEditarController(id)
+        }
+        else if(partes[2] == "detalles"){
+            const id = partes[3];
+            const vistaHtml = await fetch("./src/views/dashboard/admin/galeria/detalles/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            await galeriaDetalleController(id);
         }
         else if(partes[2] == "nueva" ){
             const vistaHtml = await fetch("./src/views/dashboard/admin/galeria/nueva/index.html");

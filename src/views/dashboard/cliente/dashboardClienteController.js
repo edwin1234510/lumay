@@ -1,6 +1,7 @@
 import { headerController } from "../../../componentes/headerController";
 import { agendarCitaController } from "./agendar/agendarController";
 import { seleccionPerforacionController } from "./agendar/piercing/piercingAgendarController";
+import { clienteGaleriaController } from "./galeria/clienteGaleria";
 import { detalleReservaController } from "./reserva/detalles/detalleReservaController";
 import { editarDetalleController } from "./reserva/detalles/editar/editarDetalleController";
 import { editarReservaController } from "./reserva/editar/editarReservaController";
@@ -43,6 +44,12 @@ export const dashboardClienteController = async () => {
       const html = await vistaHtml.text();
       main.innerHTML = html;
       await seleccionPerforacionController();
+    }
+    else if (partes[1] == "galeria") {
+      const vistaHtml = await fetch("./src/views/dashboard/cliente/galeria/index.html");
+      const html = await vistaHtml.text();
+      main.innerHTML = html;
+      await clienteGaleriaController();
     }
     else if(partes[1] == "agendar"){
       const vistaHtml = await fetch("./src/views/dashboard/cliente/agendar/index.html");

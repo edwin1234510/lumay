@@ -83,7 +83,6 @@
   height: 180px;
   border: dashed 3px var(--borde_naraja);
   display: flex;
-  border-radius: 12px;
   align-items: center;
   font-size: 40px;
   justify-content: center;

@@ -28,31 +28,36 @@
 }
 .cartas {
     width: 100%;
-    height: auto;
+    height: 35vh;
     border: 5px solid #4C5AE4;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     border-radius: 15px;
+    
   }
   
   
   .cartas__imagen {
     width: 170px;
     height: 170px;
-    margin: 20px;
+    margin-top: 12px;
   }
   
   .carta_informacion {
     text-align: center;
-  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 4px;
+  }
+  .carta_informacion--gap{
+    gap: 20px;
   }
   
   .carta_informacion__parrafo {
-    margin-bottom: 8px;
     font-family: "Poppins", sans-serif;
-    color: #464646;
     font-size: 16px;
   }
 

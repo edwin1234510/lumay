@@ -2,8 +2,8 @@ import { alertaInfo } from "../../../../componentes/sweetAlert";
 import { get } from "../../../../utils/api";
 import { traerPerfo } from "../../../../validaciones/validacion";
 
-export const adminGaleriaController = async () => {
-  const galeria = document.querySelector(".grid_galeria");
+export const clienteGaleriaController = async() =>{
+    const galeria = document.querySelector(".grid_galeria");
 
   try {
     const datos = await get("galeria");
@@ -20,7 +20,7 @@ export const adminGaleriaController = async () => {
       imagen.alt = "Imagen de piercing";
 
       const informacion = document.createElement("div");
-      informacion.classList.add("carta_informacion");
+      informacion.classList.add("carta_informacion", "carta_informacion--gap");
 
       const piercing = document.createElement("p");
       piercing.classList.add("carta_informacion__parrafo");
@@ -34,21 +34,8 @@ export const adminGaleriaController = async () => {
         alertaInfo("Cuidados", item.cuidados);
       });
 
-
-      // 🔵 Botón Editar
-      const btnDetalle = document.createElement("a");
-      btnDetalle.classList.add("boton--detalles");
-      btnDetalle.textContent = "Detalles";
-
-      btnDetalle.addEventListener("click", ()=>{
-        window.location.href = `#admin/galeria/detalles/${item.id_imagen}`;
-      })
-
-
       informacion.appendChild(piercing);
       informacion.appendChild(cuidados);
-      informacion.appendChild(btnDetalle)
-
       carta.appendChild(imagen);
       carta.appendChild(informacion);
       
@@ -57,4 +44,4 @@ export const adminGaleriaController = async () => {
   } catch (error) {
     console.error("Error al cargar la galería:", error);
   }
-};
+}

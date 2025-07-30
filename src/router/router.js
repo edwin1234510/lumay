@@ -19,7 +19,7 @@ export const router = async (elemento) => {
 };
 
 const recorrerRutas = (routers, hash) => {
-  const partes = hash.split("/").filter(Boolean); // Ej: ["cliente", "detalles"]
+  const partes = hash.split("/").filter(Boolean); 
 
   // Si no hay hash, ir a login
   if (partes.length === 0 || partes[0] === "login") {
