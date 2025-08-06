@@ -2,10 +2,16 @@ import { headerController } from "../../../componentes/headerController";
 import { adminGaleriaController } from "./galeria/adminGaleriaController";
 import { galeriaDetalleController } from "./galeria/detalles/galeriaDetalles";
 import { crearCarta } from "./galeria/nueva/nuevaCarta";
+import { adminPiercingController } from "./piercing/adminPiercing";
+import { editarPiercingController } from "./piercing/formularioPiercing/editarPiercingController";
+import { piercingController } from "./piercing/formularioPiercing/piercingController";
 import { adminCalendarioController } from "./reservas/adminReservasController";
 import { editarReservasAdmin } from "./reservas/editarReservas";
 import { usuarioEditarController } from "./usuarios/editar/usuarioEditarController";
 import { usuarioController } from "./usuarios/usuarioController";
+import { adminZonaController } from "./zona/adminZonaController";
+import { crearZona } from "./zona/formularioZona/CrearZona";
+import { editarZona } from "./zona/formularioZona/editarZona";
 
 export const dashboardAdminController = async() =>{
 
@@ -32,6 +38,45 @@ export const dashboardAdminController = async() =>{
             const html = await vistaHtml.text();
             main.innerHTML = html;
             await usuarioEditarController(id)
+        }
+        else if(partes[1] == "zona" && partes[2] == "nuevo"){
+            const vistaHtml = await fetch("./src/views/dashboard/admin/zona/formularioZona/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            crearZona();
+        }
+        else if(partes[1] == "zona" && partes[2] == "editar"){
+            const id = partes[3]
+            const vistaHtml = await fetch("./src/views/dashboard/admin/zona/formularioZona/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            editarZona(id);
+        }
+        else if(partes[1] == "zona"){
+            const vistaHtml = await fetch("./src/views/dashboard/admin/zona/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            adminZonaController();
+        }
+        else if(partes[1] == "piercing" && partes[2] == "nuevo"){
+            const vistaHtml = await fetch("./src/views/dashboard/admin/piercing/formularioPiercing/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            piercingController();
+        }
+        else if(partes[1] == "piercing" && partes[2] == "editar"){
+            const id = partes[3];
+            const vistaHtml = await fetch("./src/views/dashboard/admin/piercing/formularioPiercing/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            editarPiercingController(id)
+        }
+        else if(partes[1] == "piercing"){
+            const id = partes[3];
+            const vistaHtml = await fetch("./src/views/dashboard/admin/piercing/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            adminPiercingController();
         }
         else if(partes[2] == "detalles"){
             const id = partes[3];

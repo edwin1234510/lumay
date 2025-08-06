@@ -57,7 +57,11 @@ export const nombreUsuario = async(id) =>{
   return usuario.nombre;
 }
 
-
+export async function nombreZona(id_zona) {
+  const data = await get("zonas");
+  let zona = data.find(zona => id_zona == zona.id_zona);
+  return zona.nombre_zona;
+}
 
 export async function traerPerfo(id_piercing) {
     const piercings = await get("piercings");
