@@ -2,6 +2,10 @@ import { headerController } from "../../../componentes/headerController";
 import { adminGaleriaController } from "./galeria/adminGaleriaController";
 import { galeriaDetalleController } from "./galeria/detalles/galeriaDetalles";
 import { crearCarta } from "./galeria/nueva/nuevaCarta";
+import { adminMaterialController } from "./material/adminMaterial";
+import { crearMaterialController } from "./material/formulario/crearMaterial";
+import { editarMaterialController } from "./material/formulario/editarMaterial";
+import { perfilController } from "./perfil/perfilController";
 import { adminPiercingController } from "./piercing/adminPiercing";
 import { editarPiercingController } from "./piercing/formularioPiercing/editarPiercingController";
 import { piercingController } from "./piercing/formularioPiercing/piercingController";
@@ -16,7 +20,7 @@ import { editarZona } from "./zona/formularioZona/editarZona";
 export const dashboardAdminController = async() =>{
 
     const header = document.querySelector("#header");
-    const headerHtml = await fetch("./src/componentes/header.html").then(r => r.text());
+    const headerHtml = await fetch("./src/componentes/headerAdmin.html").then(r => r.text());
     header.innerHTML = headerHtml;
     await headerController();
 
@@ -39,6 +43,12 @@ export const dashboardAdminController = async() =>{
             main.innerHTML = html;
             await usuarioEditarController(id)
         }
+        else if (partes[1] == "perfil") {
+            const vistaHtml = await fetch("./src/views/dashboard/cliente/perfil/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            await perfilController();
+          }
         else if(partes[1] == "zona" && partes[2] == "nuevo"){
             const vistaHtml = await fetch("./src/views/dashboard/admin/zona/formularioZona/index.html");
             const html = await vistaHtml.text();
@@ -57,6 +67,25 @@ export const dashboardAdminController = async() =>{
             const html = await vistaHtml.text();
             main.innerHTML = html;
             adminZonaController();
+        }
+        else if(partes[1] == "material" && partes[2] == "nuevo"){
+            const vistaHtml = await fetch("./src/views/dashboard/admin/material/formulario/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            crearMaterialController();
+        }
+        else if(partes[1] == "material" && partes[2] == "editar"){
+            const id = partes[3]
+            const vistaHtml = await fetch("./src/views/dashboard/admin/material/formulario/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            editarMaterialController(id);
+        }
+        else if(partes[1] == "material"){
+            const vistaHtml = await fetch("./src/views/dashboard/admin/material/index.html");
+            const html = await vistaHtml.text();
+            main.innerHTML = html;
+            adminMaterialController();
         }
         else if(partes[1] == "piercing" && partes[2] == "nuevo"){
             const vistaHtml = await fetch("./src/views/dashboard/admin/piercing/formularioPiercing/index.html");
@@ -110,7 +139,7 @@ export const dashboardAdminController = async() =>{
             main.innerHTML = html
             await adminCalendarioController();
         }
-        else if (partes[1] == "usuarios") {
+        else if (partes.length == 1 || partes[1] == "usuarios") {
             const vistaHtml = await fetch("./src/views/dashboard/admin/usuarios/index.html");
             const html = await vistaHtml.text();
             main.innerHTML = html;

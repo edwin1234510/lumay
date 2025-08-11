@@ -20,6 +20,7 @@
     --hover_boton: #ff6422;
     --texto_blanco: #fff;
     --input_fondo_lila: #b1b7f3;
+    --hover_lila: #b1b7f3;
     --texto_lila: #b1b7f3;
     --fondo_morado: #4C5AE4;
     --fondo_blanco: #fff;
@@ -259,6 +260,7 @@
   font-family: var(--Nerko_One);
 }
 
+
 /*--- imagenes en agendar -----*/
 .imagen_esquinas {
   position: absolute;
@@ -434,6 +436,11 @@
   color:var(--texto_blanco);
 }
 
+.calendario-admin .fc-event.cancelada {
+  background-color: var(--fondo_naranja); 
+  border: solid 2px var(--borde_naraja);
+  color:var(--texto_blanco);
+}
 
 /* Forzar estilo general para todos los botones de FullCalendar */
 .fc .fc-button {
@@ -458,8 +465,10 @@
   justify-content: start;
   align-items: end;
 }
-
-
+/*perfil*/
+.perfil__link{
+  text-decoration: none;
+}
 
   
 @media(max-width: 1000px) {

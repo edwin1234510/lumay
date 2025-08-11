@@ -2,6 +2,8 @@ import { headerController } from "../../../componentes/headerController";
 import { agendarCitaController } from "./agendar/agendarController";
 import { seleccionPerforacionController } from "./agendar/piercing/piercingAgendarController";
 import { clienteGaleriaController } from "./galeria/clienteGaleria";
+import { perfilController } from "./perfil/perfilController";
+
 import { detalleReservaController } from "./reserva/detalles/detalleReservaController";
 import { editarDetalleController } from "./reserva/detalles/editar/editarDetalleController";
 import { editarReservaController } from "./reserva/editar/editarReservaController";
@@ -36,8 +38,14 @@ export const dashboardClienteController = async () => {
       main.innerHTML = html;
       await editarReservaController(idCita);
     }
-    else if (partes.length == 1 || partes[1] == "reserva") {
+    else if ( partes[1] == "reserva") {
       await reservaController(main);
+    }
+    else if (partes[1] == "perfil") {
+      const vistaHtml = await fetch("./src/views/dashboard/cliente/perfil/index.html");
+      const html = await vistaHtml.text();
+      main.innerHTML = html;
+      await perfilController();
     }
     else if (partes[1] == "agendar" && partes[2] == "perforacion") {
       const vistaHtml = await fetch("./src/views/dashboard/cliente/agendar/piercing/index.html");
@@ -51,7 +59,7 @@ export const dashboardClienteController = async () => {
       main.innerHTML = html;
       await clienteGaleriaController();
     }
-    else if(partes[1] == "agendar"){
+    else if(partes.length == 1 || partes[1] == "agendar"){
       const vistaHtml = await fetch("./src/views/dashboard/cliente/agendar/index.html");
       const html = await vistaHtml.text();
       main.innerHTML = html;

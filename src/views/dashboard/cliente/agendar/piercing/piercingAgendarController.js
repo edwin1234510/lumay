@@ -6,11 +6,6 @@ export const seleccionPerforacionController = async () => {
   const btnGuardar = document.getElementById("btnGuardar");
   const contenedorMain = document.querySelector(".main-container");
 
-  if (!btnAgregar || !btnGuardar || !contenedorMain) {
-    console.error("No se encontraron los elementos esperados en el DOM.");
-    return;
-  }
-
   let piercings = [];
   let materiales = [];
 
@@ -34,8 +29,11 @@ export const seleccionPerforacionController = async () => {
 
     if (!selectPiercing || !selectMaterial || !precioP) return;
 
+    const piercingsActivos = piercings.filter(p => p.id_estado_piercing === 1);
+    const materialesActivos = materiales.filter(m => m.id_estado_material === 1);
+
     selectPiercing.innerHTML = '<option value="">Piercing</option>';
-    piercings.forEach(p => {
+    piercingsActivos.forEach(p => {
       const option = document.createElement("option");
       option.value = p.id_piercing;
       option.textContent = p.nombre_piercing;
@@ -44,7 +42,7 @@ export const seleccionPerforacionController = async () => {
     });
 
     selectMaterial.innerHTML = '<option value="">Material</option>';
-    materiales.forEach(m => {
+    materialesActivos.forEach(m => {
       const option = document.createElement("option");
       option.value = m.id_material;
       option.textContent = m.tipo_material;
@@ -120,7 +118,7 @@ export const seleccionPerforacionController = async () => {
         detalles.push({
           id_piercing,
           id_material,
-          duracion_minutos: 15
+          duracion_minutos: 15,
         });
       }
     });

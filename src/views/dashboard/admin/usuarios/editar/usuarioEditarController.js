@@ -1,7 +1,6 @@
 import { get, put } from "../../../../../utils/api.js";
 import { alertaExito, alertaError } from "../../../../../componentes/sweetAlert.js";
 import { esContrasenaSegura, esCorreoValido, esTelefonoValido, soloLetras, soloNumeros } from "../../../../../validaciones/validacion.js";
-import { nombreRol } from "../../../../../validaciones/validacion.js";
 
 export const usuarioEditarController = async (id_usuario) => {
   const form = document.querySelector("#formEditar");
@@ -13,7 +12,7 @@ export const usuarioEditarController = async (id_usuario) => {
   const inputCorreo = document.querySelector("#correo");
   const inputContrasena = document.querySelector("#contrasena");
   const inputTelefono = document.querySelector("#telefono");
-  const inputRol = document.querySelector("#rol");
+  const selectEstado = document.querySelector("#estado");
 
   // Obtener todos los usuarios y buscar el que se va a editar
   const usuarios = await get("usuarios");
@@ -24,10 +23,23 @@ export const usuarioEditarController = async (id_usuario) => {
     return;
   }
 
-  // Obtener el nombre del rol con tu función personalizada
-  const nombreDelRol = await nombreRol(usuario.id_rol);
-  inputRol.value = nombreDelRol;
-  inputRol.readOnly = true;
+  // **Carga de estados** (puedes cambiar la URL si tienes un endpoint específico)
+  // Si tienes pocos estados, puedes hardcodear así:
+  const estados = [
+    { id_estado_usuario: 1, nombre_estado: "Activo" },
+    { id_estado_usuario: 2, nombre_estado: "Inactivo" }
+  ];
+
+  // Llenar el select con los estados disponibles
+  estados.forEach(estado => {
+    const option = document.createElement("option");
+    option.value = estado.id_estado_usuario;
+    option.textContent = estado.nombre_estado;
+    selectEstado.appendChild(option);
+  });
+
+  // Setear el estado actual del usuario en el select
+  selectEstado.value = usuario.id_estado_usuario || 1; // Asume activo si no tiene
 
   // Llenar los inputs
   inputDocumento.value = usuario.numero_documento;
@@ -73,14 +85,14 @@ export const usuarioEditarController = async (id_usuario) => {
       correo: inputCorreo.value.trim(),
       contrasena: inputContrasena.value.trim(),
       telefono: inputTelefono.value.trim(),
-      // El rol no se modifica, pero se debe enviar porque el PUT lo necesita
-      id_rol: usuario.id_rol
+      id_rol: 1,
+      id_estado_usuario: parseInt(selectEstado.value)
     };
 
-    const res = await put(`usuarios/${id_usuario}`, actualizacion);
+    const res = await put(`usuarios/${id_usuario}/estado`, actualizacion);
     if (res.ok) {
       alertaExito("Usuario actualizado correctamente");
-      window.location.hash = "#admin/clientes";
+      window.location.hash = "#admin/usuarios";
     } else {
       alertaError("Error al actualizar el usuario");
     }

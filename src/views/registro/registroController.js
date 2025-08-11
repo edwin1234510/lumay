@@ -48,7 +48,8 @@ export const registroController =  async() =>{
             correo: correo.value.trim(),
             contrasena: contrasena.value.trim(),
             telefono: parseInt(telefono.value.trim()),
-            id_rol: 1
+            id_rol: 1,
+            id_estado_usuario: 1
         }
         try {
             const response = await post("usuarios", objeto);

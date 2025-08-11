@@ -1,6 +1,6 @@
 import { nombreRol } from "../../../../validaciones/validacion.js";
 import { confirmarAccion, alertaExito, alertaError } from "../../../../componentes/sweetAlert.js";
-import { del, get } from "../../../../utils/api.js";
+import { put, get } from "../../../../utils/api.js"; // Importa put para actualizar
 
 export const usuarioController = async () => {
   const adminActual = JSON.parse(localStorage.getItem("usuario")); // 👈 Admin logueado
@@ -24,6 +24,10 @@ async function renderFila(usuario) {
 
   const nombre_rol = await nombreRol(usuario.id_rol);
 
+  // Aquí puedes hacer una función para obtener el nombre del estado, o asumir que viene en usuario
+  // Por simplicidad, asumo que en usuario viene id_estado_usuario y nombre_estado
+  const nombre_estado = usuario.nombre_estado || (usuario.id_estado_usuario === 1 ? "Activo" : "Inactivo");
+
   const celdaTexto = (contenido) => {
     const td = document.createElement("td");
     td.classList.add("celda");
@@ -35,9 +39,9 @@ async function renderFila(usuario) {
   const nombre = celdaTexto(usuario.nombre);
   const apellido = celdaTexto(usuario.apellido);
   const correo = celdaTexto(usuario.correo);
-  const contrasena = celdaTexto(usuario.contrasena);
   const telefono = celdaTexto(usuario.telefono);
   const rol = celdaTexto(nombre_rol);
+  const estado = celdaTexto(nombre_estado);
 
   // Botón Editar
   const btnEditar = document.createElement("button");
@@ -51,21 +55,33 @@ async function renderFila(usuario) {
   tdEditar.classList.add("celda");
   tdEditar.appendChild(btnEditar);
 
-  // Botón Eliminar
+  // Botón "Eliminar" (en realidad desactivar usuario)
   const btnEliminar = document.createElement("button");
   btnEliminar.textContent = "Eliminar";
   btnEliminar.classList.add("celda__boton", "boton--rojo");
   btnEliminar.addEventListener("click", () => {
     confirmarAccion(
       "Espera",
-      `¿Deseas eliminar al usuario ${usuario.nombre} ${usuario.apellido}?`,
+      `¿Deseas desactivar al usuario ${usuario.nombre} ${usuario.apellido}?`,
       async () => {
-        const res = await del(`usuarios/${usuario.id_usuario}`);
-        if (res.ok) {
-          fila.remove(); // Elimina la fila directamente
-          alertaExito("Usuario eliminado correctamente");
-        } else {
-          alertaError("No se pudo eliminar el usuario");
+        const usuarioActualizado = { ...usuario, id_estado_usuario: 2 };
+        try {
+          const res = await put(`usuarios/${usuario.id_usuario}/estado`, usuarioActualizado);
+          if (res.ok) {
+            alertaExito("Usuario desactivado correctamente");
+  
+            // Actualizar el texto del estado en la fila sin recargar
+            // Asumiendo que el 'estado' es la celda creada arriba
+            estado.textContent = "Inactivo";
+  
+            // Opcional: deshabilitar el botón eliminar o cambiar texto para no desactivar más
+            btnEliminar.disabled = true;
+            btnEliminar.textContent = "Desactivado";
+          } else {
+            alertaError("No se pudo desactivar el usuario");
+          }
+        } catch (error) {
+          alertaError("Error al desactivar el usuario");
         }
       }
     );
@@ -75,6 +91,6 @@ async function renderFila(usuario) {
   tdEliminar.classList.add("celda");
   tdEliminar.appendChild(btnEliminar);
 
-  fila.append(documento, nombre, apellido, correo, contrasena, telefono, rol, tdEditar, tdEliminar);
+  fila.append(documento, nombre, apellido, correo, telefono, rol, estado, tdEditar, tdEliminar);
   return fila;
 }

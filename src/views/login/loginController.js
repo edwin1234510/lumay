@@ -27,32 +27,31 @@ export const loginController = () => {
 
     try {
       const response = await post("usuarios/login", objeto);
+    
       if (response.ok) {
         const data = await response.json();
         const rol = await nombreRol(data.id_rol);
-
         localStorage.setItem("usuario", JSON.stringify(data));
-
-        // Mensaje de bienvenida
         alertaExito(`Bienvenido, ${data.nombre}`);
-
-        // Redirigir según el rol
+    
         if (rol === "admin") {
-          alertaExito(`¡Bienvenido admin ${data.nombre} ${data.apellido}!`);
-          localStorage.setItem("usuario", JSON.stringify(data));
           window.location.hash = "admin";
         } else if (rol === "cliente") {
-          alertaExito(`¡Bienvenido ${data.nombre} ${data.apellido}!`);
-          localStorage.setItem("usuario", JSON.stringify(data)); // Guarda el usuario
           window.location.hash = "cliente";
         }
-        
+    
+      } else if (response.status === 403) {
+        alertaError("El usuario está inactivo, no puede iniciar sesión.");
+      } else if (response.status === 401) {
+        alertaError("Credenciales incorrectas.");
       } else {
-        alertaError("Credenciales incorrectas o error de autenticación.");
+        alertaError("Error desconocido al iniciar sesión.");
       }
+    
     } catch (error) {
       alertaError("Error de conexión con el servidor");
       console.error(error);
     }
+    
   });
 };

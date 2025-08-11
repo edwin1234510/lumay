@@ -15,7 +15,8 @@ export const crearZona = async() =>{
             return
         }
         const objeto = {
-            nombre_zona: zona
+            nombre_zona: zona,
+            id_estado_zona: 1
         }
         const respuesta = await post("zonas",objeto);
         try {

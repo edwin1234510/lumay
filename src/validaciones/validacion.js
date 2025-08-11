@@ -95,3 +95,28 @@ export async function traerPerfo(id_piercing) {
     });
   
   }
+
+
+export async function obtenerNombreEstadoZona(id_estado_zona) {
+  const estados = await get("estados_zonas");
+  const estadoEncontrado = estados.find(estado => estado.id_estado_zona === id_estado_zona);
+  return estadoEncontrado.nombre_estado;
+}
+
+export async function obtenerNombreEstadoMaterial(id_estado_material) {
+  const estados = await get("estados_materiales_joyas");
+  const estadoEncontrado = estados.find(estado => estado.id_estado_material === id_estado_material);
+  return estadoEncontrado.nombre_estado;
+}
+
+export async function obtenerNombreEstadoPiercing(id_estado_piercing) {
+  const estados = await get("estados_piercings");
+  const estadoEncontrado = estados.find(estado => estado.id_estado_piercing === id_estado_piercing);
+  return estadoEncontrado.nombre_estado;
+}
+
+export async function obtenerNombreEstadoCita(id_estado_cita) {
+  const estados = await get("estados_piercings");
+  const estadoEncontrado = estados.find(estado => estado.id_estado_cita === id_estado_cita);
+  return estadoEncontrado.nombre_estado;
+}

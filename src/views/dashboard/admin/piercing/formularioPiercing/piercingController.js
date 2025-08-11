@@ -13,12 +13,14 @@ export const piercingController = async () => {
 
     try {
         const zonas = await get("zonas");
-        zonas.forEach(z => {
-            const option = document.createElement("option");
-            option.value = z.id_zona;
-            option.textContent = z.nombre_zona;
-            selectZona.appendChild(option);
-        });
+        zonas
+            .filter(z => z.id_estado_zona === 1) 
+            .forEach(z => {
+                const option = document.createElement("option");
+                option.value = z.id_zona;
+                option.textContent = z.nombre_zona;
+                selectZona.appendChild(option);
+            });
     } catch (error) {
         console.error("Error al cargar zonas:", error);
     }
@@ -46,7 +48,8 @@ export const piercingController = async () => {
         const nuevoPiercing = {
             nombre_piercing: nombre,
             precio_piercing: precio,
-            id_zona: idZona
+            id_zona: idZona,
+            id_estado_piercing: 1
         };
         const respuesta = await post("piercings", nuevoPiercing);
         try {

@@ -23,6 +23,15 @@
     font-size: 18px;
     transition: 0.3s;
 }
+.boton--salir{
+  background-color: var(--fondo_morado);
+  color: var(--texto_blanco);
+  margin-bottom: 30px;
+  transition: 0.3s;
+}
+.boton--salir:hover{
+  background-color: var(--hover_lila);
+}
 
 .boton--sin_margen{
   margin: 0;

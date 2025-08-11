@@ -27,38 +27,32 @@ export const editarReservaController = async (idCita) => {
 
   // Evento submit
   formEditar.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const nuevaFecha = inputFecha.value;
-    const nuevaHora = inputHora.value;
+  const nuevaFecha = document.querySelector("#fecha").value;
+  const nuevaHora = document.querySelector("#hora").value;
 
-    const formatHora = (hora) => {
-      const [h, m] = hora.split(":");
-      return `${h.padStart(2, '0')}:${m.padStart(2, '0')}`;
-    };
-    
-    const citaActualizada = {
-      fecha: nuevaFecha,
-      hora: formatHora(nuevaHora),
-      id_usuario: cita.id_usuario
-    };
-    console.log(citaActualizada);
-    
-    try {
-      const response = await put(`citas/${idCita}`, citaActualizada);
-
-      if (response.ok) {
-        alertaExito("Cita actualizada correctamente");
-      } else if (response.status === 409) {
-        const mensaje = await response.text();
-        alertaError("Ya existe una cita en ese horario: " + mensaje);
-      } else {
-        alertaError("Error al actualizar la cita.");
-      }
-
-    } catch (error) {
-      console.error("Error actualizando la cita:", error);
-      alertaError("Error inesperado al actualizar la cita.");
+  const citaActualizada = {
+    fecha: nuevaFecha,
+    hora: nuevaHora
+  };
+  console.log(citaActualizada);
+  
+  try {
+    const response = await put(`citas/${idCita}/actualizar-fecha-hora`, citaActualizada);
+  
+    if (response.ok) {
+      alertaExito("Fecha y hora actualizadas correctamente");
+    } else if (response.status === 409) {  // Conflicto de horario detectado por el backend
+      const data = await response.json();
+      alertaError(data.error || "La nueva fecha/hora se solapa con otra cita.");
+    } else {
+      alertaError("Error al actualizar la fecha y hora.");
     }
-  });
+  } catch (error) {
+    console.error("Error actualizando la cita:", error);
+    alertaError("Error inesperado al actualizar la cita.");
+  }
+  
+});
 };

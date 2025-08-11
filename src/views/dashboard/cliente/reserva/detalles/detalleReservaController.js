@@ -64,7 +64,6 @@ export const detalleReservaController = async (id_cita) => {
       }
 
       const idDetalle = e.target.getAttribute("id");
-      const fila = e.target.closest("tr");
 
       confirmarAccion(
         "Espera",
@@ -73,7 +72,6 @@ export const detalleReservaController = async (id_cita) => {
           try {
             const response = await del("citas/detalle/" + idDetalle);
             if (response.ok) {
-              fila.remove();
               alertaExito("Perforación eliminada correctamente");
             } else {
               alertaError("No se pudo eliminar la perforación.");
