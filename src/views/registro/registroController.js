@@ -31,7 +31,9 @@ export const registroController =  async() =>{
             return alertaError("Ningún campo puede estar vacío");
           }
 
-        
+        if (documento.value.trim().length < 6 || documento.value.trim().length > 10) {
+          return alertaError("El documento debe tener entre 6 y 10 caracteres");
+        }
 
         if (
             !esCorreoValido(correo.value) ||
