@@ -4,7 +4,7 @@
 @import url(./componentes/formularios.css);
 @import url(./componentes/tabla.css);
 @import url(./componentes/cartas.css);
- 
+
 * {
   margin: 0;
   padding: 0;
@@ -12,185 +12,199 @@
 }
 
 :root {
-    --borde_naraja: #EF885D;
-    --borde_morado: #4C5AE4;
-    --texto_naranja: #EF885D;
-    --boton_naranja: #EF885D;
-    --sombra_tabla: #f2ac8e;
-    --hover_boton: #ff6422;
-    --texto_blanco: #fff;
-    --input_fondo_lila: #b1b7f3;
-    --hover_lila: #b1b7f3;
-    --texto_lila: #b1b7f3;
-    --fondo_morado: #4C5AE4;
-    --fondo_blanco: #fff;
-    --fondo_naranja: #EF885D;
-    --texto_morado: #4C5AE4;
-    --texto_gris: #464646;
-    --texto_negro: #262626;
-    --body_fondo: #fff;
-    --hover_boton_sidebar: #d8d8d8;
-    --Nerko_One: "Nerko One", cursive;
-    --Poppins: "Poppins", sans-serif;
+  --borde_naraja: #EF885D;
+  --borde_morado: #4C5AE4;
+  --texto_naranja: #EF885D;
+  --boton_naranja: #EF885D;
+  --sombra_tabla: #f2ac8e;
+  --hover_boton: #ff6422;
+  --texto_blanco: #fff;
+  --input_fondo_lila: #b1b7f3;
+  --hover_lila: #b1b7f3;
+  --texto_lila: #b1b7f3;
+  --fondo_morado: #4C5AE4;
+  --fondo_blanco: #fff;
+  --fondo_naranja: #EF885D;
+  --texto_morado: #4C5AE4;
+  --texto_gris: #464646;
+  --texto_negro: #262626;
+  --body_fondo: #fff;
+  --menu: #fff;
+  --hover_boton_sidebar: #d8d8d8;
+  --Nerko_One: "Nerko One", cursive;
+  --Poppins: "Poppins", sans-serif;
 }
 
 
 /*-------- login y registro ---------*/
 .contenedor {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-  }
-  
-  .contenedor__izquierda {
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0 30px;
-  }
-  
-  .contenedor__derecha {
-    width: 40%;
-    justify-content: end;
-    display: flex;
-  }
-  
-  .contenedor__imagen {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .logo {
-    width: 150px;
-    height: 120px;
-    margin-bottom: 20px;
-  }
-  /*---- dashboard -----*/
-  .grid {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 13% 1fr;
-    grid-template-rows: 90px 1fr;
-    grid-template-areas:
-      'encabezado encabezado'
-      'sidebar container';
-  }
-  /*------ header ------*/
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
 
-  .encabezado {
-    grid-area: encabezado;
-    background-color: var(--fondo_morado);
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;          
-    padding: 0 40px;               
-    height: 100%;                   
-  }
-  
-  .encabezado__izquierda {
-    display: flex;
-    align-items: center;
-  }
-  
-  .encabezado__logo {
-    margin: 0;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-  }
-  
-  .encabezado__imagen {
-    width: 110px;
-    height: 70px;
-  }
-  
-  .encabezado__derecha {
-    display: flex;
-  }
-  
-  .encabezado__perfil {
-    display: flex;
-    align-items: center;
-  }
-  
-  .encabezado__nombre {
-    display: flex;
-    align-items: center;
-    height: 15px;
-    color: var(--texto_blanco);
-    font-family: var(--Nerko_One);
-    font-weight: normal;
-    font-size: 30px;
-    margin-right: 18px;
-  }
-  
-  .encabezado__icono {
-    background: var(--fondo_blanco);
-    color: var(--texto_naranja);
-    height: 60px;
-    width: 60px;
-    font-size: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .encabezado__linea {
-    width: 3px;
-    height: 35px;
-    background: var(--fondo_blanco);
-    margin-right: 18px;
-  }
+.contenedor__izquierda {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 30px;
+}
 
-  /*---- sidebar -----*/
-  .sidebar {
-    grid-area: sidebar;
-    background-color: var(--fondo_naranja);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .sidebar__link {
-    margin: 60px 15px 0 15px;
-    text-decoration: none;
-    font-size: 30px;
-    font-family: var(--Nerko_One);
-    color: var(--texto_blanco);
-    padding: 5px 7px;
-    border-bottom: solid 4px var(--borde_naraja);
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-  }
-  
-  .sidebar__link:hover {
-    color: var(--hover_boton_sidebar);
-  }
-  
-  .sidebar__icono {
-    margin-right: 15px;
-  }
+.contenedor__derecha {
+  width: 40%;
+  justify-content: end;
+  display: flex;
+}
 
-  
-  /*---- main o contend---*/
-  .main-container {
-    grid-area: container;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    position: relative;
-    min-width: 397px;
-    overflow-x: auto;
-    width: 100%;
-    height: 100%;
-  }
-  
+.contenedor__imagen {
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  width: 150px;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+/*---- dashboard -----*/
+.grid {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 13% 1fr;
+  grid-template-rows: 90px 1fr;
+  grid-template-areas:
+    'encabezado encabezado'
+    'sidebar container';
+}
+
+/*------ header ------*/
+
+.encabezado {
+  grid-area: encabezado;
+  background-color: var(--fondo_morado);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 100%;
+}
+
+.encabezado__izquierda {
+  display: flex;
+  align-items: center;
+}
+
+.encabezado__logo {
+  margin: 0;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.encabezado__imagen {
+  width: 110px;
+  height: 70px;
+}
+
+.encabezado__derecha {
+  display: flex;
+}
+
+.encabezado__perfil {
+  display: flex;
+  align-items: center;
+}
+
+.encabezado__nombre {
+  display: flex;
+  align-items: center;
+  height: 15px;
+  color: var(--texto_blanco);
+  font-family: var(--Nerko_One);
+  font-weight: normal;
+  font-size: 30px;
+  margin-right: 18px;
+}
+
+.encabezado__icono {
+  background: var(--fondo_blanco);
+  color: var(--texto_naranja);
+  height: 60px;
+  width: 60px;
+  font-size: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.encabezado__linea {
+  width: 3px;
+  height: 35px;
+  background: var(--fondo_blanco);
+  margin-right: 18px;
+}
+
+.encabezado__input {
+  display: none;
+}
+
+.encabezado__menu {
+  color: var(--menu);
+  font-size: 37px;
+  margin-right: 40px;
+}
+
+
+/*---- sidebar -----*/
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--fondo_naranja);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar__link {
+  margin: 60px 15px 0 15px;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: var(--Nerko_One);
+  color: var(--texto_blanco);
+  padding: 5px 7px;
+  border-bottom: solid 4px var(--borde_naraja);
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__link:hover {
+  color: var(--hover_boton_sidebar);
+}
+
+.sidebar__icono {
+  margin-right: 15px;
+}
+
+
+/*---- main o contend---*/
+.main-container {
+  grid-area: container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  min-width: 397px;
+  overflow-x: auto;
+  width: 100%;
+  height: 100%;
+}
+
 /*----- reserva -----*/
 .reserva {
   width: 80%;
@@ -267,7 +281,8 @@
   width: 220px;
   height: 220px;
 }
-.imagen_esquinas_primero{
+
+.imagen_esquinas_primero {
   position: absolute;
   width: 220px;
   height: 220px;
@@ -276,12 +291,13 @@
 }
 
 /*----- piercing agendar  ----*/
-.contenedor_todo{
+.contenedor_todo {
   width: 100%;
   height: 100vh;
-  display: flex ;
+  display: flex;
   align-content: center;
 }
+
 .contenido_agendar {
   border: solid 6px var(--borde_morado);
   width: 80%;
@@ -431,15 +447,15 @@
 }
 
 .calendario-admin .fc-event.completada {
-  background-color: var(--fondo_morado); 
+  background-color: var(--fondo_morado);
   border: solid 2px var(--borde_morado);
-  color:var(--texto_blanco);
+  color: var(--texto_blanco);
 }
 
 .calendario-admin .fc-event.cancelada {
-  background-color: var(--fondo_naranja); 
+  background-color: var(--fondo_naranja);
   border: solid 2px var(--borde_naraja);
-  color:var(--texto_blanco);
+  color: var(--texto_blanco);
 }
 
 /* Forzar estilo general para todos los botones de FullCalendar */
@@ -458,25 +474,55 @@
   background-color: var(--texto_lila) !important;
 }
 
-.agregar{
+.agregar {
   width: 78vw;
   height: 50px;
   display: flex;
   justify-content: start;
   align-items: end;
 }
+
 /*perfil*/
-.perfil__link{
+.perfil__link {
   text-decoration: none;
 }
 
-  
+
+
+/*---------------------------------------*/
+
 @media(max-width: 1000px) {
   .contenedor__derecha {
     display: none;
   }
-  .contenedor__izquierda{
-      width: 100%;
+
+  .contenedor__izquierda {
+    width: 100%;
   }
 }
+
+@media(max-width: 590px) {
+  .encabezado__imagen {
+    display: none;
+  }
+}
+
+@media(max-width: 1476px) {
+
+  .imagen_esquinas,
+  .imagen_esquinas_primero {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'encabezado encabezado'
+      'container container';
+  }
   
+  .sidebar {
+    position: absolute;
+    left: -1000px;
+  }
+}
