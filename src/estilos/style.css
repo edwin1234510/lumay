@@ -154,6 +154,7 @@
 }
 
 .encabezado__menu {
+  display: none;
   color: var(--menu);
   font-size: 37px;
   margin-right: 40px;
@@ -205,6 +206,10 @@
   height: 100%;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 /*----- reserva -----*/
 .reserva {
   width: 80%;
@@ -246,7 +251,7 @@
 
 .reserva__boton {
   min-width: 180px;
-  padding: 6px 0;
+  padding: 3px 0;
   background-color: var(--borde_naraja);
   color: var(--texto_blanco);
   font-size: 30px;
@@ -325,6 +330,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 20px;
 }
 
 .material {
@@ -333,6 +339,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 20px;
 }
 
 .precios {
@@ -342,6 +349,7 @@
   font-family: var(--Poppins);
   font-size: 16px;
   border-right: solid 2px var(--borde_morado);
+  padding: 0 20px;
 }
 
 .contenedor_main__icono {
@@ -358,6 +366,7 @@
   justify-content: center;
   font-family: var(--Nerko_One);
   font-size: 27px;
+  padding: 0 20px;
 }
 
 .eliminar__link {
@@ -488,7 +497,6 @@
 }
 
 
-
 /*---------------------------------------*/
 
 @media(max-width: 1000px) {
@@ -520,9 +528,139 @@
       'encabezado encabezado'
       'container container';
   }
-  
-  .sidebar {
-    position: absolute;
-    left: -1000px;
+
+  .ocultar {
+    display: none;
   }
+
+  .sidebar {
+    grid-column-start: 0;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    z-index: 10;
+    width: 200px;
+  }
+
+  .lef-cero {
+    z-index: -1;
+  }
+
+  .encabezado__menu {
+    display: flex;
+  }
+}
+
+@media(max-width: 500px) {
+  .encabezado__nombre {
+    display: none;
+  }
+
+  .encabezado__linea {
+    display: none;
+  }
+}
+
+@media(max-width: 1120px) {
+  .contenido_agendar {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 100px);
+  }
+
+  .material,
+  .perforacion {
+    border: none;
+    border-bottom: solid 2px var(--borde_morado);
+  }
+
+  .perforacion {
+    border-right: solid 2px var(--borde_morado);
+  }
+
+  .contenido_agendar {
+    min-height: 212px;
+  }
+}
+
+@media(max-width: 707px) {
+  .contenido_agendar {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, 100px);
+  }
+
+  .material,
+  .perforacion,
+  .precios {
+    border: none;
+  }
+
+  .material,
+  .perforacion,
+  .precios {
+    border-bottom: solid 2px var(--borde_morado);
+  }
+
+  .contenido_agendar {
+    min-height: 412px;
+  }
+}
+
+@media(max-width: 1636px) {
+  .reserva__estado {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}
+
+@media(max-width: 860px) {
+  .reserva {
+    min-height: auto;
+  }
+
+  .reserva {
+    grid-template-areas:
+      'fecha detalles'
+      'estado estado';
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 100px);
+  }
+
+  .reserva__estado {
+    grid-area: estado;
+    flex-direction: row;
+  }
+
+  .reserva__acciones {
+    border-right: none;
+  }
+
+  .reserva__detalle,
+  .reserva__acciones {
+    border-bottom: solid 2px var(--borde_morado);
+  }
+}
+
+@media(max-width: 610px) {
+  .reserva {
+    grid-template-areas:
+      'fecha'
+      'detalles'
+      'estado';
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 130px);
+  }
+
+  .reserva__acciones {
+    border-left: none;
+  }
+
+}
+
+@media(max-width: 530px) {
+  .reserva__estado {
+    flex-direction: column;
+  }
+
 }

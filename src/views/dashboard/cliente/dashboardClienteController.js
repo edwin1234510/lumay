@@ -38,7 +38,7 @@ export const dashboardClienteController = async () => {
       main.innerHTML = html;
       await editarReservaController(idCita);
     }
-    else if ( partes[1] == "reserva") {
+    else if (partes[1] == "reserva") {
       await reservaController(main);
     }
     else if (partes[1] == "perfil") {
@@ -59,7 +59,7 @@ export const dashboardClienteController = async () => {
       main.innerHTML = html;
       await clienteGaleriaController();
     }
-    else if(partes.length == 1 || partes[1] == "agendar"){
+    else if (partes.length == 1 || partes[1] == "agendar") {
       const vistaHtml = await fetch("./src/views/dashboard/cliente/agendar/index.html");
       const html = await vistaHtml.text();
       main.innerHTML = html;
@@ -80,7 +80,7 @@ export const dashboardClienteController = async () => {
       const html = await vistaHtml.text();
       main.innerHTML = html;
       await detalleReservaController(idCita);
-    } 
+    }
     else if (partes[1] === "editar") {
       // Editar detalle (cliente/editar/:id)
       const idDetalle = partes[2];

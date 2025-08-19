@@ -1,14 +1,14 @@
 .grid_galeria {
   margin-top: 70px;
   display: grid;
-  width: 80%;
   grid-template-columns: repeat(5, 1fr);
   grid-row: auto 1fr;
   gap: 35px;
+  place-items: center;
 }
 
 .carta-nueva {
-  width: 100%;
+  width: 240px;
   height: 35vh;
   border: 5px dashed var(--borde_morado);
   display: flex;
@@ -29,7 +29,7 @@
 }
 
 .cartas {
-  width: 100%;
+  width: 240px;
   height: 35vh;
   border: 5px solid var(--borde_morado);
   display: flex;
@@ -66,4 +66,28 @@
 .btn-cuidados {
   position: relative;
   cursor: pointer;
+}
+
+@media(max-width: 1680px) {
+  .grid_galeria {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media(max-width: 1300px) {
+  .grid_galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media(max-width: 1000px) {
+  .grid_galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 630px) {
+  .grid_galeria {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

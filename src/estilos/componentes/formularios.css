@@ -16,6 +16,8 @@
   z-index: 1;
 }
 
+
+
 .formulario--margin-top {
   margin-top: 220px;
 }
@@ -111,4 +113,12 @@
 
 .formulario_carta--margin {
   margin-top: 70px;
+}
+
+
+
+@media(max-width: 500px) {
+  .formulario {
+    width: 0;
+  }
 }

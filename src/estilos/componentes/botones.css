@@ -1,46 +1,48 @@
 .boton {
-    margin-top: 25px;
-    padding: 8px 25px;
-    font-size: 22px;
-    border: none;
-    border-radius: 30px;
-    font-family: var(--Nerko_One);
-    letter-spacing: 2px;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-.boton--cuidados{
-    border-radius: 30px;
-    font-family: var(--Poppins);
-    font-weight: 500;
-    letter-spacing: 1px;
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-    color: var(--texto_morado);
-    background-color: var(--fondo_blanco);
-    font-size: 18px;
-    transition: 0.3s;
+  margin-top: 25px;
+  padding: 8px 25px;
+  font-size: 22px;
+  border: none;
+  border-radius: 30px;
+  font-family: var(--Nerko_One);
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-decoration: none;
 }
-.boton--salir{
+
+.boton--cuidados {
+  border-radius: 30px;
+  font-family: var(--Poppins);
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  color: var(--texto_morado);
+  background-color: var(--fondo_blanco);
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.boton--salir {
   background-color: var(--fondo_morado);
   color: var(--texto_blanco);
   margin-bottom: 30px;
   transition: 0.3s;
 }
-.boton--salir:hover{
+
+.boton--salir:hover {
   background-color: var(--hover_lila);
 }
 
-.boton--sin_margen{
+.boton--sin_margen {
   margin: 0;
 }
 
-.boton--detalles{
+.boton--detalles {
   border-radius: 30px;
   font-family: var(--Poppins);
-    font-weight: 500;
+  font-weight: 500;
   letter-spacing: 1px;
   cursor: pointer;
   text-decoration: none;
@@ -50,20 +52,22 @@
   font-size: 18px;
   transition: 0.3s;
 }
-.boton--detalles:hover{
+
+.boton--detalles:hover {
   color: var(--hover_boton);
 }
-.boton--cuidados:hover{
+
+.boton--cuidados:hover {
   color: var(--texto_lila);
 }
 
-  .boton--primario {
-    background: var(--boton_naranja);
-    color: var(--texto_blanco);
-    margin-bottom: 30px;
-  }
-  
-  .boton--primario:hover {
-    background: var(--hover_boton);
-    transition: 0.3s;
-  }
+.boton--primario {
+  background: var(--boton_naranja);
+  color: var(--texto_blanco);
+  margin-bottom: 30px;
+}
+
+.boton--primario:hover {
+  background: var(--hover_boton);
+  transition: 0.3s;
+}
