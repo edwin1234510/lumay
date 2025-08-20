@@ -45,6 +45,12 @@ export const piercingController = async () => {
             return;
         }
 
+        const repetidos = await get("piercings");
+        const existentes = repetidos.some(p => p.nombre_piercing.toLowerCase() == nombre.toLowerCase());
+        if (existentes) {
+            return alertaError("El piercing ya existe");
+        }
+
         const nuevoPiercing = {
             nombre_piercing: nombre,
             precio_piercing: precio,

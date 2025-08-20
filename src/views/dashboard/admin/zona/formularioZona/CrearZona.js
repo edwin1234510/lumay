@@ -1,5 +1,5 @@
 import { alertaError, alertaExito } from "../../../../../componentes/sweetAlert";
-import { post } from "../../../../../utils/api";
+import { get, post } from "../../../../../utils/api";
 import { soloLetras } from "../../../../../validaciones/validacion";
 
 export const crearZona = async() =>{
@@ -14,6 +14,13 @@ export const crearZona = async() =>{
             alertaError("El campo no puede estar vacio")
             return
         }
+
+        const repetidos = await get("zonas");
+        const existentes = repetidos.some(z => z.nombre_zona.toLowerCase() == zona.toLowerCase());
+        if (existentes) {
+            return alertaError("La zona ya existe");
+        }
+
         const objeto = {
             nombre_zona: zona,
             id_estado_zona: 1

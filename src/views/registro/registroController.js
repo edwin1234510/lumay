@@ -1,5 +1,5 @@
 import { alertaError, alertaExito } from "../../componentes/sweetAlert";
-import { post } from "../../utils/api";
+import { get, post } from "../../utils/api";
 import { esContrasenaSegura, esCorreoValido, esTelefonoValido, soloLetras, soloNumeros } from "../../validaciones/validacion";
 
 
@@ -18,8 +18,12 @@ export const registroController =  async() =>{
     apellido.addEventListener("keydown", soloLetras);
     telefono.addEventListener("keydown", soloNumeros);
 
+    
+    
     formularioRegistro.addEventListener("submit", async(e)=>{
         e.preventDefault();
+        
+
         if (
             documento.value.trim() === "" ||
             nombre.value.trim() === "" ||
@@ -42,6 +46,24 @@ export const registroController =  async() =>{
           ) {
             return;
           }
+        
+          const repetidos = await get("usuarios");
+          const existeDocumento = repetidos.some(u => u.numero_documento == documento.value.trim());
+          if (existeDocumento) {
+            return alertaError("Ya existe un usuario con ese número de documento");
+          }
+
+          const existeCorreo = repetidos.some(u => u.correo.toLowerCase() === correo.value.trim().toLowerCase());
+          if (existeCorreo) {
+            return alertaError("Ya existe un usuario con ese correo");
+          }
+
+          const existeTelefono = repetidos.some(u => u.telefono == telefono.value.trim());
+          if (existeTelefono) {
+            return alertaError("Ya existe un usuario con ese número de teléfono");
+          }
+        
+        
 
         const objeto = {
             numero_documento: parseInt(documento.value.trim()),

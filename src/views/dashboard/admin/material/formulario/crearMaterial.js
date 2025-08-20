@@ -1,5 +1,5 @@
 import { alertaError, alertaExito } from "../../../../../componentes/sweetAlert";
-import { post } from "../../../../../utils/api";
+import { get, post } from "../../../../../utils/api";
 import { soloLetras, soloNumeros } from "../../../../../validaciones/validacion";
 
 export const crearMaterialController = async() =>{
@@ -25,6 +25,12 @@ export const crearMaterialController = async() =>{
         if (precio <= 0) {
             alertaError("El precio debe ser mayor a 0.");
             return;
+        }
+
+        const repetidos = await get("materiales");
+        const existentes = repetidos.some(m => m.tipo_material.toLowerCase() == material.toLowerCase());
+        if (existentes) {
+            return alertaError("El material ya existe");
         }
 
         const objeto = {
