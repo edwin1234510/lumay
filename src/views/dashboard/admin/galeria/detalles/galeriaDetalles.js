@@ -1,5 +1,6 @@
 import { get} from "../../../../..//utils/api";
 import { alertaExito, alertaError,confirmarAccion } from "../../../../../componentes/sweetAlert";
+
 export const galeriaDetalleController = async (id_carta) => {
   const formulario = document.querySelector("#cartaFormulario");
   const select = document.querySelector("#selectPiercing");

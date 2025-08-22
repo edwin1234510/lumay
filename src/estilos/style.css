@@ -35,6 +35,29 @@
   --Poppins: "Poppins", sans-serif;
 }
 
+/* Grid normal (cuando ya inició sesión) */
+.grid-con-layout {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 13% 1fr;
+  grid-template-rows: 90px 1fr;
+  grid-template-areas:
+    "encabezado encabezado"
+    "sidebar container";
+}
+
+/* Grid simplificada (login / registro) */
+.grid-sin-layout {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:"container";
+}
+
+/* Ajustar cada zona */
+.encabezado { grid-area: encabezado; }
+.sidebar { grid-area: sidebar; }
+.main-container { grid-area: container; }
+
 
 /*-------- login y registro ---------*/
 .contenedor {
@@ -69,7 +92,7 @@
   margin-bottom: 20px;
 }
 
-/*---- dashboard -----*/
+/*---- dashboard -----
 .grid {
   height: 100vh;
   display: grid;
@@ -78,12 +101,11 @@
   grid-template-areas:
     'encabezado encabezado'
     'sidebar container';
-}
+}*/
 
 /*------ header ------*/
 
 .encabezado {
-  grid-area: encabezado;
   background-color: var(--fondo_morado);
   display: flex;
   justify-content: space-between;
@@ -163,7 +185,6 @@
 
 /*---- sidebar -----*/
 .sidebar {
-  grid-area: sidebar;
   background-color: var(--fondo_naranja);
   display: flex;
   flex-direction: column;
@@ -194,7 +215,6 @@
 
 /*---- main o contend---*/
 .main-container {
-  grid-area: container;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -215,11 +235,15 @@
   width: 80%;
   min-height: 130px;
   border: 5px solid var(--borde_morado);
-  margin-top: 50px;
+  margin-bottom: 50px;
   border-radius: 12px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
+}
+
+.reserva:nth-child(1){
+  margin-top: 50px;
 }
 
 .reserva__detalle {
@@ -495,6 +519,8 @@
 .perfil__link {
   text-decoration: none;
 }
+/*---------------------------------------*/
+
 
 
 /*---------------------------------------*/
@@ -522,7 +548,7 @@
     display: none;
   }
 
-  .grid {
+  .grid-con-layout {
     grid-template-columns: 1fr;
     grid-template-areas:
       'encabezado encabezado'

@@ -1,5 +1,6 @@
 .grid_galeria {
   margin-top: 70px;
+  margin-bottom: 30px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-row: auto 1fr;

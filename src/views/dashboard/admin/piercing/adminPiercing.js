@@ -1,5 +1,5 @@
 import { alertaError, alertaExito, confirmarAccion } from "../../../../componentes/sweetAlert";
-import { del, get, put } from "../../../../utils/api";
+import { get, put } from "../../../../utils/api";
 import { nombreZona, obtenerNombreEstadoPiercing } from "../../../../validaciones/validacion";
 
 export const adminPiercingController = async() =>{

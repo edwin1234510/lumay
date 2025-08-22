@@ -1,7 +1,7 @@
 import { router } from "./router/router";
 import './estilos/style.css';
 
-const app = document.querySelector("#app")
+const app = document.querySelector("#contenido-dinamico")
 
 window.addEventListener("DOMContentLoaded", ()=> {
     router(app)

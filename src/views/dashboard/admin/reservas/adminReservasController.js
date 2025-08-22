@@ -47,7 +47,7 @@ export const adminCalendarioController = async () => {
         `,
         () => {
           // Acción si elige "Editar"
-          window.location.hash = `#admin/editar-cita/${idCita}`;
+          window.location.hash = `#admin/reservas/editar/${idCita}`;
         },
         async () => {
           // Acción si confirma "Actualizar estado"

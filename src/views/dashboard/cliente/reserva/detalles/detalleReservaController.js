@@ -51,7 +51,7 @@ export const detalleReservaController = async (id_cita) => {
 
     botonEditar.addEventListener("click", (e) => {
       e.preventDefault();
-      window.location.href = `#cliente/editar/${e.target.getAttribute("id")}`;
+      window.location.href = `#cliente/detalles/editar/${e.target.getAttribute("id")}`;
     });
 
     botonEliminar.addEventListener("click", (e) => {
