@@ -1,43 +1,118 @@
-
+const API_URL = "http://localhost:8080/LumayJava/api/";
 
 export const get = async (endpoint) => {
-    const data = await fetch(`http://localhost:8080/LumayJava/api/` + endpoint);
-    return await data.json();
-  }
-  
-  export const post = async (enpoint, info) => {
-    return await fetch(`http://localhost:8080/LumayJava/api/` + enpoint, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(info)
-    })
-  }
-  
-  export const postFormData = async (endpoint, formData) => {
-    return await fetch(`http://localhost:8080/LumayJava/api/` + endpoint, {
-      method: 'POST',
-      body: formData // No pongas headers, el navegador lo hace solo
+  let res = await fetch(API_URL + endpoint, {
+    headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` }
+  });
+
+  if (res.status === 401) {
+    await refreshAccessToken();
+    res = await fetch(API_URL + endpoint, {
+      headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` }
     });
-  };
-  
-  export const put = async (enpoint, info) => {
-    return await fetch(`http://localhost:8080/LumayJava/api/` + enpoint, {
-      method: 'PUT',
+  }
+
+  return await res.json();
+};
+
+export const post = async (endpoint, info) => {
+  const token = localStorage.getItem("accessToken");
+  const headers = { "Content-Type": "application/json" };
+  if (token) headers.Authorization = `Bearer ${token}`;
+
+  return fetch(API_URL + endpoint, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(info)
+  });
+};
+
+export const postFormData = async (endpoint, formData) => {
+  let res = await fetch(API_URL + endpoint, {
+    method: "POST",
+    body: formData,
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+    }
+  });
+
+  if (res.status === 401) {
+    await refreshAccessToken();
+    res = await fetch(API_URL + endpoint, {
+      method: "POST",
+      body: formData,
       headers: {
-        "Content-Type": "application/json"
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+      }
+    });
+  }
+
+  return res;
+};
+
+export const put = async (endpoint, info) => {
+  let res = await fetch(API_URL + endpoint, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+    },
+    body: JSON.stringify(info)
+  });
+
+  if (res.status === 401) {
+    await refreshAccessToken();
+    res = await fetch(API_URL + endpoint, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
       },
       body: JSON.stringify(info)
-    })
+    });
   }
-  
-  export const del = async (endpoint) => {
-    return await fetch(`http://localhost:8080/LumayJava/api/` + endpoint, {
-      method: 'DELETE',
+
+  return res;
+};
+
+export const del = async (endpoint) => {
+  let res = await fetch(API_URL + endpoint, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+    }
+  });
+
+  if (res.status === 401) {
+    await refreshAccessToken();
+    res = await fetch(API_URL + endpoint, {
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
       }
-    })
+    });
   }
-  
+
+  return res;
+};
+
+async function refreshAccessToken() {
+  const refreshToken = localStorage.getItem("refreshToken");
+  if (!refreshToken) return;
+
+  const res = await fetch(API_URL + "usuarios/refresh", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ refreshToken })
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    localStorage.setItem("accessToken", data.accessToken);
+  } else {
+    localStorage.clear();
+    window.location.hash = "login";
+  }
+}
