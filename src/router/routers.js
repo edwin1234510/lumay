@@ -48,34 +48,42 @@ export const routers = {
       agendar: {
         path: "dashboard/cliente/agendar/index.html",
         controller: agendarCitaController,
+        can: "cita.crear"
       },
       "agendar/perforacion": {
         path: "dashboard/cliente/agendar/piercing/index.html",
         controller: seleccionPerforacionController,
+        can: "detalle.crear"
       },
       galeria: {
         path: "dashboard/cliente/galeria/index.html",
         controller: clienteGaleriaController,
+        can: "galeria.index"
       },
       perfil: {
         path: "dashboard/cliente/perfil/index.html",
         controller: perfilController,
+        can: "perfil.editar"
       },
       reserva: {
         path: "dashboard/cliente/reserva/index.html",
         controller: reservaController,
+        can: "cita.index"
       },
       "reserva/editar/:id": {
         path: "dashboard/cliente/reserva/editar/index.html",
         controller: (main, params) => editarReservaController(params[0]),
+        can: "cita.editar"
       },
       "detalles/:id": {
         path: "dashboard/cliente/reserva/detalles/index.html",
         controller: (main, params) => detalleReservaController(params[0]),
+        can: "detalle.index"
       },
       "detalles/editar/:id": {
         path: "dashboard/cliente/reserva/detalles/editar/index.html",
         controller: (main, params) => editarDetalleController(params[0]),
+        can: "detalle.editar"
       },
     },
   },
@@ -87,70 +95,87 @@ export const routers = {
       usuarios: {
         path: "dashboard/admin/usuarios/index.html",
         controller: usuarioController,
+        can: "usuario.index"
       },
       "usuarios/editar/:id": {
         path: "dashboard/admin/usuarios/editar/index.html",
         controller: (main, params) => usuarioEditarController(params[0]),
+        can: "usuarios.editar"
       },
       perfil: {
         path: "dashboard/admin/perfil/index.html",
         controller: perfilController,
+        can: "perfil.editar"
       },
       zona: {
         path: "dashboard/admin/zona/index.html",
         controller: adminZonaController,
+        can: "zona.index"
       },
       "zona/nuevo": {
         path: "dashboard/admin/zona/formularioZona/index.html",
         controller: crearZona,
+        can: "zona.crear"
       },
       "zona/editar/:id": {
         path: "dashboard/admin/zona/formularioZona/index.html",
         controller: (main, params) => editarZona(params[0]),
+        can: "zona.editar"
       },
       material: {
         path: "dashboard/admin/material/index.html",
         controller: adminMaterialController,
+        can: "material.index"
       },
       "material/nuevo": {
         path: "dashboard/admin/material/formulario/index.html",
         controller: crearMaterialController,
+        can: "material.crear"
       },
       "material/editar/:id": {
         path: "dashboard/admin/material/formulario/index.html",
         controller: (main, params) => editarMaterialController(params[0]),
+        can: "material.editar"
       },
       piercing: {
         path: "dashboard/admin/piercing/index.html",
         controller: adminPiercingController,
+        can: "piercing.index"
       },
       "piercing/nuevo": {
         path: "dashboard/admin/piercing/formularioPiercing/index.html",
         controller: piercingController,
+        can: "piercing.crear"
       },
       "piercing/editar/:id": {
         path: "dashboard/admin/piercing/formularioPiercing/index.html",
         controller: (main, params) => editarPiercingController(params[0]),
+        can: "piercing.editar"
       },
       galeria: {
         path: "dashboard/admin/galeria/index.html",
         controller: adminGaleriaController,
+        can: "galeria.index"
       },
       "galeria/detalles/:id": {
         path: "dashboard/admin/galeria/detalles/index.html",
         controller: (main, params) => galeriaDetalleController(params[0]),
+        can: "galeria.editar"
       },
       "galeria/nueva": {
         path: "dashboard/admin/galeria/nueva/index.html",
         controller: crearCarta,
+        can: "galeria.crear"
       },
       reservas: {
         path: "dashboard/admin/reservas/index.html",
         controller: adminCalendarioController,
+        can: "cita.index"
       },
       "reservas/editar/:id": {
         path: "dashboard/cliente/reserva/editar/index.html", // ojo, usas vista cliente
         controller: (main, params) => editarReservasAdmin(params[0]),
+        can: "estado.editar"
       },
     },
   },
