@@ -60,6 +60,7 @@ export const put = async (endpoint, info) => {
     body: JSON.stringify(info)
   });
 
+  // 👉 Si expiró el token, intentar refrescar
   if (res.status === 401) {
     await refreshAccessToken();
     res = await fetch(API_URL + endpoint, {
@@ -72,7 +73,15 @@ export const put = async (endpoint, info) => {
     });
   }
 
-  return res;
+  // 📌 Intentar parsear JSON (si la respuesta lo tiene)
+  const data = await res.json().catch(() => ({}));
+
+  // 📌 Validar si la respuesta fue exitosa
+  if (!res.ok) {
+    throw new Error(data.error || `Error ${res.status}: ${res.statusText}`);
+  }
+
+  return data;
 };
 
 export const del = async (endpoint) => {
@@ -115,4 +124,4 @@ async function refreshAccessToken() {
     localStorage.clear();
     window.location.hash = "login";
   }
-}
+}   
