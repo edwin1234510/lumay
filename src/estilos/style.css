@@ -214,6 +214,7 @@
 
 
 /*---- main o contend---*/
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -222,8 +223,14 @@
   position: relative;
   min-width: 397px;
   overflow-x: auto;
+  overflow-y: auto;
   width: 100%;
   height: 100%;
+  padding: 0 20px;
+}
+
+.main-container--sin-padding{
+  padding: 0 0;
 }
 
 ::-webkit-scrollbar {
@@ -443,7 +450,7 @@
 /*--- calendario ----*/
 /* Contenedor principal del calendario */
 .calendario-admin {
-  width: 80%;
+  width: 1125px;
   margin: 60px auto;
   padding: 20px;
   background-color: var(--fondo_blanco);
@@ -547,7 +554,9 @@
   .imagen_esquinas_primero {
     display: none;
   }
+}
 
+@media(max-width: 1560px) {
   .grid-con-layout {
     grid-template-columns: 1fr;
     grid-template-areas:

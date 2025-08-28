@@ -55,6 +55,17 @@
   font-family: var(--Poppins);
   font-size: 18px;
 }
+.formulario--mt{
+  margin-top: 190px;
+}
+
+.conten-boton{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 10px;
+  gap: 10px;
+}
 
 .formulario__input {
   background: var(--input_fondo_lila);

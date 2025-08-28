@@ -1,3 +1,5 @@
+// Importación de todos los controladores utilizados en el sistema.
+// Cada controlador gestiona la lógica de las vistas según el rol (cliente o admin).
 import { dashboardClienteController } from "../views/dashboard/cliente/dashboardClienteController";
 import { agendarCitaController } from "../views/dashboard/cliente/agendar/agendarController";
 import { seleccionPerforacionController } from "../views/dashboard/cliente/agendar/piercing/piercingAgendarController";
@@ -29,64 +31,77 @@ import { editarReservasAdmin } from "../views/dashboard/admin/reservas/editarRes
 import { editarZona } from "../views/dashboard/admin/zona/formularioZona/editarZona";
 
 
+/**
+ * Objeto principal de enrutamiento de la aplicación.
+ * 
+ * Define las rutas disponibles para clientes y administradores,
+ * asignando la vista (path), el controlador encargado de la lógica
+ * y el nivel de acceso (público/privado o permisos específicos).
+ */
 export const routers = {
+  // Rutas públicas
   login: {
-    path: "login/index.html",
-    controller: loginController,
-    private: false,
+    path: "login/index.html",      // Ruta hacia la vista de login
+    controller: loginController,   // Controlador que gestiona el login
+    private: false,                // Acceso público
   },
   registro: {
-    path: "registro/index.html",
-    controller: registroController,
-    private: false,
+    path: "registro/index.html",   // Ruta hacia la vista de registro
+    controller: registroController,// Controlador que gestiona el registro
+    private: false,                // Acceso público
   },
+
+  // Rutas de clientes (requieren estar autenticado)
   cliente: {
     path: "dashboard/cliente/index.html",
     controller: dashboardClienteController,
-    private: true,
+    private: true,                 // Solo usuarios logueados
     routes: {
       agendar: {
         path: "dashboard/cliente/agendar/index.html",
         controller: agendarCitaController,
-        can: "cita.crear"
+        can: "cita.crear"          // Permiso necesario para agendar cita
       },
       "agendar/perforacion": {
         path: "dashboard/cliente/agendar/piercing/index.html",
         controller: seleccionPerforacionController,
-        can: "detalle.crear"
+        can: "detalle.crear"       // Permiso para elegir perforación
       },
       galeria: {
         path: "dashboard/cliente/galeria/index.html",
         controller: clienteGaleriaController,
-        can: "galeria.index"
+        can: "galeria.index"       // Permiso para ver galería
       },
       perfil: {
         path: "dashboard/cliente/perfil/index.html",
         controller: perfilController,
-        can: "perfil.editar"
+        can: "perfil.editar"       // Permiso para editar perfil
       },
       reserva: {
         path: "dashboard/cliente/reserva/index.html",
         controller: reservaController,
-        can: "cita.index"
+        can: "cita.index"          // Permiso para ver reservas
       },
       "reserva/editar/:id": {
         path: "dashboard/cliente/reserva/editar/index.html",
+        // Controlador recibe como parámetro el id de la reserva
         controller: (main, params) => editarReservaController(params[0]),
-        can: "cita.editar"
+        can: "cita.editar"         // Permiso para editar cita
       },
       "detalles/:id": {
         path: "dashboard/cliente/reserva/detalles/index.html",
         controller: (main, params) => detalleReservaController(params[0]),
-        can: "detalle.index"
+        can: "detalle.index"       // Permiso para ver detalles de la reserva
       },
       "detalles/editar/:id": {
         path: "dashboard/cliente/reserva/detalles/editar/index.html",
         controller: (main, params) => editarDetalleController(params[0]),
-        can: "detalle.editar"
+        can: "detalle.editar"      // Permiso para editar detalles de la reserva
       },
     },
   },
+
+  // Rutas de administradores (requieren autenticación y permisos específicos)
   admin: {
     path: "dashboard/admin/index.html",
     controller: dashboardAdminController,
@@ -95,12 +110,12 @@ export const routers = {
       usuarios: {
         path: "dashboard/admin/usuarios/index.html",
         controller: usuarioController,
-        can: "usuario.index"
+        can: "usuario.index"       // Permiso para ver usuarios
       },
       "usuarios/editar/:id": {
         path: "dashboard/admin/usuarios/editar/index.html",
         controller: (main, params) => usuarioEditarController(params[0]),
-        can: "usuarios.editar"
+        can: "usuarios.editar"     // Permiso para editar usuario
       },
       perfil: {
         path: "dashboard/admin/perfil/index.html",
@@ -173,7 +188,7 @@ export const routers = {
         can: "cita.index"
       },
       "reservas/editar/:id": {
-        path: "dashboard/cliente/reserva/editar/index.html", // ojo, usas vista cliente
+        path: "dashboard/cliente/reserva/editar/index.html", 
         controller: (main, params) => editarReservasAdmin(params[0]),
         can: "estado.editar"
       },

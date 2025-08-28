@@ -23,6 +23,7 @@
   color: var(--fondo_naranja);
   font-size: 40px;
   transition: 0.3s;
+  padding-bottom: 30px;
 }
 
 .carta-nueva__icono:hover {
@@ -31,7 +32,7 @@
 
 .cartas {
   width: 240px;
-  height: 35vh;
+  height: 38vh;
   border: 5px solid var(--borde_morado);
   display: flex;
   flex-direction: column;
