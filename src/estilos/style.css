@@ -406,22 +406,6 @@
   letter-spacing: 1px;
 }
 
-.contenedor_main__agendar {
-  text-decoration: none;
-  font-family: var(--Nerko_One);
-  font-size: 27px;
-  color: var(--texto_blanco);
-  background: var(--fondo_naranja);
-  padding: 7px 30px;
-  letter-spacing: 1px;
-  border-radius: 25px;
-  margin-bottom: 40px;
-  transition: 0.3s;
-}
-
-.contenedor_main__agendar:hover {
-  background-color: var(--hover_boton);
-}
 
 .eliminar__link:hover,
 .contenedor_main__icono:hover {

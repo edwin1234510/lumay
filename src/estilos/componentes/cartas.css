@@ -10,7 +10,7 @@
 
 .carta-nueva {
   width: 240px;
-  height: 35vh;
+  height: 38vh;
   border: 5px dashed var(--borde_morado);
   display: flex;
   flex-direction: column;

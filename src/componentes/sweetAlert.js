@@ -49,7 +49,7 @@ export function alertaInfo(titulo, mensaje) {
   Swal.fire({
     icon: "info",
     title: titulo,
-    text: mensaje,
+    html: mensaje,
     confirmButtonText: "¡Entendido!",
     confirmButtonColor: "#3085d6",
   });

@@ -190,6 +190,12 @@ export async function obtenerNombreEstadoMaterial(id_estado_material) {
  * @returns {Promise<string>} Nombre del estado.
  */
  
+export async function obtenerNombreEstadoPiercing(id_estado_piercing) {
+    const estados = await get("estados_piercings"); // Llamada a la API
+    const estadoEncontrado = estados.find(estado => estado.id_estado_piercing === id_estado_piercing);
+    return estadoEncontrado.nombre_estado;
+}
+
 
 /**
  * Obtiene el nombre de un estado de cita según su ID.

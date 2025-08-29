@@ -78,17 +78,40 @@ async function crearFacturaSiNoExiste(idCita) {
  */
 async function mostrarFacturaInfo(idCita) {
   const facturas = await get("facturas");
+  const detalles = await get("citas/detalle");
+  const piercings = await get("piercings");
+  const materiales = await get("materiales");
 
   // Buscar factura de la cita
   const factura = facturas.find(f => f.idCita === idCita);
 
-  // Mostrar información según si existe o no
+  // Filtrar todos los detalles de esa cita
+  const detallesCita = detalles.filter(d => d.id_cita === idCita);
+
+  // Construir el texto de la factura
+  let textoDetalles = "";
+  detallesCita.forEach(d => {
+    const piercing = piercings.find(p => p.id_piercing === d.id_piercing);
+    if (piercing) {
+      textoDetalles += `- ${piercing.nombre_piercing} | Precio: $${piercing.precio_piercing.toFixed(0)}<br>`;
+    }
+    const material = materiales.find(m => m.id_material === d.id_material);
+    if(material){
+      textoDetalles += `- ${material.tipo_material} | Precio: $${material.precio_material.toFixed(0)}<br>`;
+    }
+  });
+  let mensajeCompleto = textoDetalles+"<br><b>Total:</b> $"+factura.total.toFixed(0);
+  // Mostrar información
   if (factura) {
-    alertaInfo("Factura de la cita", `Total: $ ${factura.total.toFixed(0)}`);
+    alertaInfo(
+      "Factura de la cita",
+      mensajeCompleto
+    );
   } else {
     alertaInfo("Factura", "No se encontró la factura para esta cita.");
   }
 }
+
 
 /**
  * Controlador de reservas del cliente.
