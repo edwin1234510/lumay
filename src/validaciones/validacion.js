@@ -42,7 +42,7 @@ export const esCorreoValido = (correo) => {
     
     // Si el correo no cumple con el formato
     if (!regex.test(correo)) {
-        alertaError("El correo no es válido"); // Mostramos alerta de error
+        alertaError("El correo no es válido. Siga el siguiente fomato ejemplo@gmail.com"); // Mostramos alerta de error
         return false; // Retornamos false
     }
     return true; // Si es válido, retornamos true

@@ -145,7 +145,8 @@ export const perfilController = async () => {
    */
   btnCerrarSesion.addEventListener("click", (e) => {
     e.preventDefault();
-    localStorage.removeItem("usuario");
+    //localStorage.removeItem("usuario");
+    localStorage.clear();
     window.location.hash = "#login";
   });
 };
